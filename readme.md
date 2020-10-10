@@ -1,15 +1,17 @@
 # MyApp
-Kickstart application and environment for your projects.
+Kickstart environment for your projects.
 
 ## Prerequisites
 ### Required
 - Vagrant
+
 ### Recommended
 - VirtualBox
 ***
 
 ## Installation
-#### Clone the repository into your working folder (i.e. /Volumes/Sites/)
+Open a terminal window and go to your folder where you will create your project (i.e. /Volumes/Sites/).
+#### Clone the repository into your working folder
 ```
 git clone git@gitlab.wayox.net:util/anewproject.git YOUR_PROJECT_NAME
 ```
@@ -21,6 +23,7 @@ cd /Volumes/Sites/YOUR_PROJECT_NAME
 Remember to update YOUR_PROJECT_NAME with your actual project name
 #### Updating your hosts file
 MacOS & Linux
+In your terminal, run
 ```
 sudo nano /etc/hosts
 ```
@@ -28,13 +31,13 @@ PC
 ```
 Open [SystemRoot]\system32\drivers\etc\hosts and edit the file with your text editor with admin privileges.
 ```
-Add the following lines at the end of the file
+Add the following lines at the end of this hosts file
 ```
 192.168.30.10   myapp.ly
 ```
-MacOS & Linux: Ctrl+O to save and Ctrl+X to quit nano.
+MacOS & Linux: 'Ctrl+O' then 'y' to save and 'Ctrl+X' to quit nano.
 PC: Save and quit your editor.
-#### Run Vagrant to initialize your environment
+#### Run Vagrant to initialize your environment.
 ```
 vagrant up
 ```
@@ -116,10 +119,10 @@ echo "xdebug.remote_host=192.168.31.1" | sudo tee -a /etc/php/7.4/apache2/php.in
 ##### Regarding the file seed_mysql.sh
 Please note that the file seed_mysql.sh is a dummy dump file, so you will have to make changes according to your app requirements.
 
-***
 ### And away you go...!!! You are ready to work!
 Check VirtualBox app to see all your vagrant instances, each one of them is properly identified with YourProjectName.
 
+***
 ## Troubleshooting
 
 ### Error 1: Brownser not showing the index page.
