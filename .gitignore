@@ -35,4 +35,4 @@ crashlytics-build.properties
 
 #Vagrant
 .vagrant/
-ubuntu-bionic-18.04-cloudimg-console.log
+*ubuntu-console.log
