@@ -20,7 +20,7 @@ echo -e "\e[96m Manually adding XDebug config lines to php.ini \e[39m"
 echo "[xdebug]" | sudo tee -a /etc/php/7.4/apache2/php.ini
 echo "zend_extension=\"/usr/lib/php/20190902/xdebug.so\"" | sudo tee -a /etc/php/7.4/apache2/php.ini
 echo "xdebug.remote_enable=1" | sudo tee -a /etc/php/7.4/apache2/php.ini
-echo "xdebug.remote_host=192.168.32.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
+echo "xdebug.remote_host=192.168.30.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
 echo "xdebug.remote_port=9000" | sudo tee -a /etc/php/7.4/apache2/php.ini
 echo "xdebug.remote_connect_back=on" | sudo tee -a /etc/php/7.4/apache2/php.ini
 echo "xdebug.remote_autostart=1" | sudo tee -a /etc/php/7.4/apache2/php.ini

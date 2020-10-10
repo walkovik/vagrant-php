@@ -41,4 +41,4 @@ sudo apt-get clean
 echo -e "\e[96m Checking git version \e[39m"
 git --version
 
-echo -e "\e[93m Way to go! install_xdebug.sh has been completed with no errors! Moving on!\e[39m"
+echo -e "\e[93m Way to go! install_git.sh has been completed with no errors! Moving on!\e[39m"

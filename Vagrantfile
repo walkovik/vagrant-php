@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
 # The line below changes the name of the host from "default" to your preferred name.
 # These lines should be updated according to each web property.
-  config.vm.define "MyApp" do |reports|
+  config.vm.define "MyApp" do |myapp|
 end
 # Now, we change the name of the Box in the VBox App.
 config.vm.provider :virtualbox do |vb|
