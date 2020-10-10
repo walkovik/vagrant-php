@@ -1,0 +1,4 @@
+[client]
+user = "myapp"
+password = "pass"
+host = "localhost"
