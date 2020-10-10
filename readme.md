@@ -49,7 +49,7 @@ If don't, please refer to the troubleshoot section below.
 ### VirtualBox
 Make sure that you installed VirtualBox, this app and its GUI will help you with your multiple environments.
 ### Setting up multiple environments
-If you like this solution to set up your environment but you prefer to use your app name insted of the placeholder "MyApp" or you decide to run multiple environments at a time, you need to do some changes in your files to run all those environments without any problem.
+If you like this solution to set up your environment but you prefer to use your app name insted of the placeholder "MyApp" or you decide to run multiple environments at a time, you need to do some changes in your files to run all of them without any problem.
 
 #### Changing your environment name, URL and updating your provision files
 This must be done for each environment and obviously, the name to change must be different for each instance.
@@ -66,7 +66,7 @@ config.vm.network "private_network",
 ```
 config.vm.hostname = "MyApp.ly"
 // Change it to
-config.vm.hostname = "YOUR.CUSTOM.IP.ADDRESS.ly"
+config.vm.hostname = "YourProjectName.ly"
 //Dont forget to use a different name for each instance
 ```
 ```
@@ -109,8 +109,8 @@ Save and quit your editor.
 ```
 echo "xdebug.remote_host=192.168.30.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
 //Change it to
-echo "xdebug.remote_host=YOUR.CUSTOM.IP.ADDRESS" | sudo tee -a /etc/php/7.4/apache2/php.ini
-// Please note that the last 0 was removed, so change it like the example above
+echo "xdebug.remote_host=ANOTHER.CUSTOM.IP.ADDRESS" | sudo tee -a /etc/php/7.4/apache2/php.ini
+// Please note that the last 0 was removed, so change it like the example below
 echo "xdebug.remote_host=192.168.31.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
 ```
 ##### Regarding the file seed_mysql.sh
@@ -119,3 +119,31 @@ Please note that the file seed_mysql.sh is a dummy dump file, so you will have t
 ***
 ### And away you go...!!! You are ready to work!
 Check VirtualBox app to see all your vagrant instances, each one of them is properly identified with YourProjectName.
+
+## Troubleshooting
+
+### Error 1: Brownser not showing the index page.
+First, try using YOUR.CUSTOM.IP.ADDRESS instead of http://yourprojectname.ly, if it loads, then you need to flush your DNS or maybe you didnt update properly your hosts file
+#### How to flush the local DNS cache
+MacOSX (depending on what you’re running, try any of these)
+```
+sudo killall -HUP mDNSResponder
+sudo discoveryutil mdnsflushcache
+```
+Windows
+```
+ipconfig /flushdns
+```
+Linux (depending on what you’re running, try any of these)
+```
+/etc/init.d/named restart
+/etc/init.d/nscd restart
+```
+
+Once your DNS were flushed, try again.
+### Error 2: You didn't see the custom success message indicated above.
+If you didn't read that message, check where the process was halted
+* If the process halted during the vagrant initialization, try rebooting your computer or reinstalling vagrant, that should fix it.
+* If it halted on the provision, try commenting some of the provision lines and destroy your machine with ```vagrant destroy```, confirm with ```y``` and try to load it up again with ```vagrant up```
+
+If the machine worked again, check the provision file that was not working and see if any of your changes broke the script.
