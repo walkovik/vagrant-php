@@ -52,7 +52,8 @@ If don't, please refer to the troubleshoot section below.
 Make sure that you installed VirtualBox, this app and its GUI will help you with your multiple environments.
 ### Setting up multiple environments
 If you like this solution to set up your environment but you prefer to use your app name insted of the placeholder "MyApp" or you decide to run multiple environments at a time, you need to do some changes in your files to run all of them without any problem.
-
+#### Before you run vagrant up
+Make sure you run all steps above but dont run ```vagrant up``` yet, proceed to the following steps first
 #### Changing your environment name, URL and updating your provision files
 This must be done for each environment and obviously, the name to change must be different for each instance.
 ##### Go to your VAGRANTFILE and update the following lines
@@ -118,10 +119,27 @@ echo "xdebug.remote_host=192.168.31.1" | sudo tee -a /etc/php/7.4/apache2/php.in
 ##### Regarding the file seed_mysql.sh
 Please note that the file seed_mysql.sh is a dummy dump file, so you will have to make changes according to your app requirements.
 
-### And away you go...!!! You are ready to work!
-Check VirtualBox app to see all your vagrant instances, each one of them is properly identified with YourProjectName.
-## Troubleshooting
+### And away you go...!!! You are ready to start!
+Now, you can run ```vagrant up``` and your new instance should load properly. Check VirtualBox app to see all your vagrant instances, each one of them is properly identified with YourProjectName.
 
+## What's next
+You will propably (and you should) want to have your new project into a different repository, because this one is for initialize your project, you can't commit any changes to this repo. Having that said, we must remove the .git folder to completely detach this repo to the source, and then we will create a new git repository with our clean project.
+
+Go to your online git service (i.e. GitLab or GitHub) and create your empty repository for this project, once you have created it, copy the ssh url provided by the service for your created repo.
+
+```sh
+rm -R .git
+# If prompted, type y for each override request
+git init
+# Change here the git@some.git.url:user/repo.git for the address you copied above 
+git remote add origin git@some.git.url:user/repo.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+```
+Now, you have your clean repo and the first commit of your project! It's time to code!
+
+## Troubleshooting
 ### Error 1: Brownser not showing the index page.
 First, try using YOUR.CUSTOM.IP.ADDRESS instead of http://yourprojectname.ly, if it loads, then you need to flush your DNS or maybe you didnt update properly your hosts file
 #### How to flush the local DNS cache
@@ -147,3 +165,6 @@ If you didn't read that message, check where the process was halted
 * If it halted on the provision, try commenting some of the provision lines and destroy your machine with ```vagrant destroy```, confirm with ```y``` and try to load it up again with ```vagrant up```
 
 If the machine worked again, check the provision file that was not working and see if any of your changes broke the script.
+
+### Error 3: YOu don't have permissions to push to your own repository
+You need to add your ssh key to your git account, please google how to do this, the process is very simple but too long to include it in this readme file.
