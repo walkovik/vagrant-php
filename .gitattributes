@@ -1,0 +1,16 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force Unix Line Endings on all standard web files
+*.html text eol=lf
+*.htm text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.scss text eol=lf
+*.xml  eol=lf
+*.md   eol=lf
+*.svg  eol=lf
+
+# Force Unix Line Endings on PHP files
+*.php text eol=lf

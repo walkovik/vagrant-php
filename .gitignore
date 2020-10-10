@@ -1,0 +1,38 @@
+##############
+##############
+# .GitIgnore #
+##############
+##############
+
+
+# Composer
+html/vendor/
+
+## Editors
+# Jetbrains
+*.ipr
+*.iws
+*.iml
+.idea/
+.idea_modules/
+/out/
+
+#sublimetext
+reports.sublime-project
+reports.sublime-workspace
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+# Other
+# Apple
+.DS_Store
+
+#Vagrant
+.vagrant/
+ubuntu-bionic-18.04-cloudimg-console.log
