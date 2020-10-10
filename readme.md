@@ -7,7 +7,6 @@ Kickstart environment for your projects.
 
 ### Recommended
 - VirtualBox
-***
 
 ## Installation
 Open a terminal window and go to your folder where you will create your project (i.e. /Volumes/Sites/).
@@ -121,8 +120,6 @@ Please note that the file seed_mysql.sh is a dummy dump file, so you will have t
 
 ### And away you go...!!! You are ready to work!
 Check VirtualBox app to see all your vagrant instances, each one of them is properly identified with YourProjectName.
-
-***
 ## Troubleshooting
 
 ### Error 1: Brownser not showing the index page.
