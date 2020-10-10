@@ -12,19 +12,19 @@ Kickstart environment for your projects.
 ## Installation
 Open a terminal window and go to your folder where you will create your project (i.e. /Volumes/Sites/).
 #### Clone the repository into your working folder
-```
+```sh
 git clone git@gitlab.wayox.net:util/anewproject.git YOUR_PROJECT_NAME
 ```
 Remember to update YOUR_PROJECT_NAME with your actual project name
 #### Go inside your project (i.e. /Volumes/Sites/YOUR_PROJECT_NAME)
-```
+```sh
 cd /Volumes/Sites/YOUR_PROJECT_NAME
 ```
 Remember to update YOUR_PROJECT_NAME with your actual project name
 #### Updating your hosts file
 MacOS & Linux
 In your terminal, run
-```
+```sh
 sudo nano /etc/hosts
 ```
 PC
@@ -38,13 +38,13 @@ Add the following lines at the end of this hosts file
 MacOS & Linux: 'Ctrl+O' then 'y' to save and 'Ctrl+X' to quit nano.
 PC: Save and quit your editor.
 #### Run Vagrant to initialize your environment.
-```
+```sh
 vagrant up
 ```
 Vagrant will initialize and will perform all required tasks to set up your virtual environment, this process takes a lot of time the first time you run it, because vagrant will download the box we are using. After the box is downloaded the first time, the process will still take some time but way less than the first time.
 
 That's it! You should be reading something like this
-```
+```sh
 ==> MyApp: Run your website or app at http://192.168.30.10 or at http://myapp.ly
 ```
 If don't, please refer to the troubleshoot section below.
@@ -57,63 +57,63 @@ If you like this solution to set up your environment but you prefer to use your 
 #### Changing your environment name, URL and updating your provision files
 This must be done for each environment and obviously, the name to change must be different for each instance.
 ##### Go to your VAGRANTFILE and update the following lines
-```
+```sh
 config.vm.network "private_network",
   ip: "192.168.30.10"
-// Change to a different IP address (YOUR.CUSTOM.IP.ADDRESS), one IP for each vagrant instance
-// Consider changing not the last part (10) but change the penultimate (30)
-// Like this 
+# Change to a different IP address (YOUR.CUSTOM.IP.ADDRESS), one IP for each vagrant instance
+# Consider changing not the last part (10) but change the penultimate (30)
+# Like this 
 config.vm.network "private_network",
   ip: "192.168.31.10"
 ```
-```
+```sh
 config.vm.hostname = "MyApp.ly"
-// Change it to
+# Change it to
 config.vm.hostname = "YourProjectName.ly"
-//Dont forget to use a different name for each instance
+# Dont forget to use a different name for each instance
 ```
-```
+```sh
 config.vm.define "MyApp" do |myapp|
-// Change it to
+# Change it to
 config.vm.define "YourProjectName" do |yourprojectname|
-// Dont forget to use a different name for each instance
+# Dont forget to use a different name for each instance
 ```
-```
+```sh
 config.vm.provider :virtualbox do |vb|
   vb.name = "MyApp"
-// Change it to
+# Change it to
 config.vm.provider :virtualbox do |vb|
   vb.name = "YourProjectName"
-// Dont forget to use a different name for each instance
+# Dont forget to use a different name for each instance
 ```
-```
+```sh
   config.vm.post_up_message = "Run your website or app at http://192.168.30.10 or at http://myapp.ly"
-// Change it to
+# Change it to
 config.vm.post_up_message = "Run your website or app at YOUR.CUSTOM.IP.ADDRESS or at http://yourprojectname.ly"
-// Dont forget to use a different name and IP for each instance
+# Dont forget to use a different name and IP for each instance
 ```
 #### Updating your hosts file
 Refer to the instalation section above to access your hosts file. Add the following lines at the end of the file
-```
+```sh
 YOUR.CUSTOM.IP.ADDRESS   yourprojectname.ly
 ```
 Save and quit your editor.
 ##### Go to your resources/vagrant/myapp.ly.conf and update the following lines
-```
+```sh
   ServerAdmin info@myapp.ly
   ServerName myapp.ly
   ServerAlias www.myapp.ly
-//Change it to
+# Change it to
   ServerAdmin info@yourprojectname.ly
   ServerName yourprojectname.ly
   ServerAlias www.yourprojectname.ly
 ```
 ##### Go to your resources/vagrant/install_xdebug.sh and update the following lines
-```
+```sh
 echo "xdebug.remote_host=192.168.30.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
-//Change it to
+# Change it to
 echo "xdebug.remote_host=ANOTHER.CUSTOM.IP.ADDRESS" | sudo tee -a /etc/php/7.4/apache2/php.ini
-// Please note that the last 0 was removed, so change it like the example below
+# Please note that the last 0 was removed, so change it like the example below
 echo "xdebug.remote_host=192.168.31.1" | sudo tee -a /etc/php/7.4/apache2/php.ini
 ```
 ##### Regarding the file seed_mysql.sh
@@ -129,16 +129,16 @@ Check VirtualBox app to see all your vagrant instances, each one of them is prop
 First, try using YOUR.CUSTOM.IP.ADDRESS instead of http://yourprojectname.ly, if it loads, then you need to flush your DNS or maybe you didnt update properly your hosts file
 #### How to flush the local DNS cache
 MacOSX (depending on what you’re running, try any of these)
-```
+```sh
 sudo killall -HUP mDNSResponder
 sudo discoveryutil mdnsflushcache
 ```
 Windows
-```
+```sh
 ipconfig /flushdns
 ```
 Linux (depending on what you’re running, try any of these)
-```
+```sh
 /etc/init.d/named restart
 /etc/init.d/nscd restart
 ```
