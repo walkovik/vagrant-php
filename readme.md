@@ -166,5 +166,5 @@ If you didn't read that message, check where the process was halted
 
 If the machine worked again, check the provision file that was not working and see if any of your changes broke the script.
 
-### Error 3: YOu don't have permissions to push to your own repository
+### Error 3: You don't have permissions to push to your own repository
 You need to add your ssh key to your git account, please google how to do this, the process is very simple but too long to include it in this readme file.
